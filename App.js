@@ -1,4 +1,5 @@
-import React from 'react';
+import * as React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
 import {
   SafeAreaView,
   ScrollView,
@@ -8,14 +9,10 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import AppNavigation from './src/navigation/appNavigation';
 
 function App() {
-  return (
-    <View>
-      <Text className="bg-red-600">Hello world</Text>
-    </View>
-  );
+  return <AppNavigation />;
 }
-
 
 export default App;
