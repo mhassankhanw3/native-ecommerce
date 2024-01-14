@@ -21,6 +21,10 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import SearchProduct from '../screens/Home/SearchProducts';
+import FeaturedProducts from '../screens/Home/FeaturedProducts';
+import DetailProduct from '../screens/Home/DetailProduct';
+import AddToCart from '../screens/Order/Cart';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -36,7 +40,7 @@ function LogoTitle() {
 
 const HomeStack = () => (
   <Stack.Navigator
-    // initialRouteName="HomeScreen"
+    initialRouteName="HomeScreen"
     screenOptions={{
       contentStyle: {
         backgroundColor: '#FFFFFF',
@@ -70,13 +74,19 @@ const HomeStack = () => (
       component={Categories}
       options={{headerShown: false}}
     />
+    <Stack.Screen
+      name="SearchProduct"
+      component={SearchProduct}
+      options={{headerShown: false}}
+    />
+
     {/* Add more screens related to Home here */}
   </Stack.Navigator>
 );
 
 const OrderStack = () => (
   <Stack.Navigator
-    // initialRouteName="MyOrder"
+    initialRouteName="MyOrder"
     screenOptions={{
       contentStyle: {
         backgroundColor: '#FFFFFF',
@@ -92,12 +102,17 @@ const OrderStack = () => (
       component={AddShippingAddress}
       options={{headerShown: false}}
     />
+    <Stack.Screen
+      name="AddToCart"
+      component={AddToCart}
+      options={{headerShown: false}}
+    />
   </Stack.Navigator>
 );
 
 const AuthStack = () => (
   <Stack.Navigator
-    // initialRouteName="SignIn"
+    initialRouteName="SignIn"
     screenOptions={{
       contentStyle: {
         backgroundColor: '#FFFFFF',
@@ -165,18 +180,18 @@ const TabScreens = () => (
     <Tab.Screen
       name="HomeStack"
       component={HomeStack}
-      options={({route}) => ({
+      options={{
         headerShown: false,
-        animation: 'slide_from_right',
+        // animation: 'slide_from_right',
         tabBarLabel: 'Home',
-      })}
+      }}
     />
     <Tab.Screen
       name="Categories"
       component={Categories}
       options={{
         headerShown: false,
-        animation: 'slide_from_right',
+        // animation: 'slide_from_right',
         tabBarLabel: 'Categories',
       }}
     />
@@ -185,7 +200,7 @@ const TabScreens = () => (
       component={OrderStack}
       options={{
         headerShown: false,
-        animation: 'slide_from_right',
+        // animation: 'slide_from_right',
         tabBarLabel: 'Order',
       }}
     />
@@ -194,7 +209,7 @@ const TabScreens = () => (
       component={AuthStack}
       options={{
         headerShown: false,
-        animation: 'slide_from_right',
+        // animation: 'slide_from_right',
         tabBarLabel: 'SignIn',
       }}
     />
@@ -214,6 +229,17 @@ export default function AppNavigation() {
         <Stack.Screen
           name="TabScreens"
           component={TabScreens}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="DetailProduct"
+          component={DetailProduct}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="FeaturedProducts"
+          component={FeaturedProducts}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

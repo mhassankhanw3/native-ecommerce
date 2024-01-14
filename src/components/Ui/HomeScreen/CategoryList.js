@@ -1,5 +1,9 @@
 import React from 'react';
 import {View, Text, FlatList, Image, StyleSheet} from 'react-native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 export default function CategoryList() {
   const categories = [
@@ -33,20 +37,46 @@ export default function CategoryList() {
       image: require('../../../assets/images/category-images/newsofa.png'),
       color: '#e4f3ea',
     },
+    {
+      id: '6',
+      title: 'Lamps',
+      image: require('../../../assets/images/category-images/lamp.png'),
+      color: '#d4f1f9',
+    },
+    {
+      id: '7',
+      title: 'Bookshelf',
+      image: require('../../../assets/images/category-images/bookshelf.png'),
+      color: '#fde8d7',
+    },
   ];
 
   const renderItem = ({item}) => (
-    <View>
-      <View style={[styles.categoryItem, {backgroundColor: item.color}]}>
-        <Image source={item.image} style={styles.categoryImage} />
+    <View className="ml-[10px] space-y-1 text-center">
+      <View
+        className="rounded-lg flex items-center justify-center text-center"
+        style={[
+          {height: hp('6.2%'), width: wp('14.4%')},
+          {backgroundColor: item.color},
+        ]}>
+        <Image
+          source={item.image}
+          className=""
+          style={{width: wp('8.2%'), height: hp('3.5%')}}
+        />
       </View>
-      <Text style={styles.categoryTitle}>{item.title}</Text>
+      <Text
+        className="text-center text-gray-600 font-medium"
+        style={{fontSize: hp('1.5%')}}>
+        {item.title}
+      </Text>
     </View>
   );
 
   return (
     <FlatList
       data={categories}
+      className="ml-1"
       horizontal
       showsHorizontalScrollIndicator={false}
       keyExtractor={item => item.id}
@@ -54,25 +84,3 @@ export default function CategoryList() {
     />
   );
 }
-
-const styles = StyleSheet.create({
-  categoryItem: {
-    width: 50,
-    height: 50,
-    borderRadius: 10,
-    margin: 10,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  categoryImage: {
-    width: 30,
-    height: 30,
-    marginBottom: 10,
-  },
-  categoryTitle: {
-    fontSize: 12,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-});

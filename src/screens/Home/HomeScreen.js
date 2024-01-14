@@ -7,53 +7,69 @@ import {
   TouchableOpacity,
   Animated,
   Pressable,
+  StatusBar,
 } from 'react-native';
 import React, {useState, useRef} from 'react';
-import Layout from '../../components/Layout/Layout';
-import Button from '../../components/Button/Button';
-import PasswordInput from '../../components/Ui/TextFields/PasswordInput';
-import HeadingTxt from '../../components/Ui/Typography/HeadingTxt';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import CustomInput from '../../components/Ui/TextFields/CustomInput';
-import BackBtn from '../../components/Button/BackBtn';
 import {useNavigation} from '@react-navigation/native';
 import SearchBar from '../../components/Ui/HomeScreen/SearchBar';
 import Banner from '../../components/Ui/HomeScreen/Banner';
 import CategoryList from '../../components/Ui/HomeScreen/CategoryList';
+import ProductCard from '../../components/Ui/HomeScreen/ProductCard';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default function HomeScreen() {
-  const [email, setEmail] = useState('');
-  const [userName, setUserName] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [searchProduct, setSearchProduct] = useState('');
-
   const navigation = useNavigation();
-
+  const backgroundColor = 'white';
+  const textColor = 'dark-content';
   return (
-    <Layout>
+    <View className="bg-white">
+      <StatusBar barStyle={textColor} backgroundColor={backgroundColor} />
       <ScrollView
         keyboardShouldPersistTaps={'always'}
         className="h-full"
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{flexGrow: 1}}>
         <View style={{flexGrow: 1}} className="px-1">
-          <SearchBar
-            placeholder={'Search Product Name'}
-            value={searchProduct}
-            onChangeText={setSearchProduct}
-          />
-          <Banner />
-          <View className="my-4 flex flex-row items-center justify-between">
+          <View className="px-3">
+            <TouchableOpacity
+              activeOpacity={0.9}
+              onPress={() => navigation.navigate('SearchProduct')}
+              className="bg-[#fafafa] flex flex-row items-center justify-between rounded-[10px] py-4 px-3 my-2">
+              <Text className="text-gray-400" style={{fontSize: hp('2%')}}>
+                Search Product Name
+              </Text>
+              <Ionicons name={'search'} size={24} color="#777" />
+            </TouchableOpacity>
+            <Banner />
+            <View className="my-4 flex flex-row items-center justify-between">
+              <Text
+                className="text-gray-700 font-medium"
+                style={{fontSize: hp('2.5%')}}>
+                Categories
+              </Text>
+              <Pressable>
+                <Text
+                  className="text-blue-500 font-medium"
+                  style={{fontSize: hp('2%')}}>
+                  See All
+                </Text>
+              </Pressable>
+            </View>
+          </View>
+          <CategoryList />
+        </View>
+        <View className="space-y-2 h-[44%] mt-3 px-2 bg-[#f5f5f5] rounded-t-3xl">
+          <View className="mt-4 px-2 flex flex-row items-center justify-between">
             <Text
               className="text-gray-700 font-medium"
               style={{fontSize: hp('2.5%')}}>
-              Categories
+              Featured Product
             </Text>
-            <Pressable>
+            <Pressable onPress={() => navigation.navigate('FeaturedProducts')}>
               <Text
                 className="text-blue-500 font-medium"
                 style={{fontSize: hp('2%')}}>
@@ -61,25 +77,11 @@ export default function HomeScreen() {
               </Text>
             </Pressable>
           </View>
-
-          <CategoryList />
-        </View>
-        <View className="flex flex-col items-center justify-center space-y-2 mb-2">
-          <Button title="Confirmation" />
-          <View className="mx-2 flex flex-row items-center">
-            <Text className="text-gray-500" style={{fontSize: hp('2.2%')}}>
-              Already have an account?{' '}
-            </Text>
-            <TouchableOpacity
-              activeOpacity={0.7}
-              onPress={() => navigation.navigate('AuthStack')}>
-              <Text className="text-blue-500" style={{fontSize: hp('2.3%')}}>
-                Sign In
-              </Text>
-            </TouchableOpacity>
+          <View className="mb-10">
+            <ProductCard />
           </View>
         </View>
       </ScrollView>
-    </Layout>
+    </View>
   );
 }
