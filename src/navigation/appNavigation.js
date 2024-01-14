@@ -3,6 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Feather from 'react-native-vector-icons/Feather';
 
 import HomeScreen from '../screens/Home/HomeScreen';
@@ -11,15 +12,31 @@ import Order from '../screens/Order/MyOrder';
 import SignIn from '../screens/Auth/SignIn';
 import SignUp from '../screens/Auth/SignUp';
 
-import TabIcon from '../components/Icon/TabIcon';
 import AddShippingAddress from '../screens/Shipping/AddShippingAddress';
+import ResetPassword from '../screens/Auth/ResetPassword';
+import EmailVerification from '../screens/Auth/EmailVerification';
+
+import {View, Text, TouchableOpacity, Image} from 'react-native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
+function LogoTitle() {
+  return (
+    <Image
+      style={{width: wp('16%'), height: hp('6%')}}
+      source={require('../assets/images/logos/ecommercelogo.png')}
+    />
+  );
+}
+
 const HomeStack = () => (
   <Stack.Navigator
-    initialRouteName="HomeScreen"
+    // initialRouteName="HomeScreen"
     screenOptions={{
       contentStyle: {
         backgroundColor: '#FFFFFF',
@@ -28,7 +45,25 @@ const HomeStack = () => (
     <Stack.Screen
       name="HomeScreen"
       component={HomeScreen}
-      options={{headerShown: false}}
+      options={{
+        headerTitle: props => (
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'center',
+              marginRight: 20,
+              // borderWidth: 1,
+              // borderColor: 'black',
+            }}>
+            <LogoTitle {...props} />
+          </View>
+        ),
+        headerRight: () => (
+          <TouchableOpacity>
+            <MaterialIcons name={'local-shipping'} size={24} color="#52525b" />
+          </TouchableOpacity>
+        ),
+      }}
     />
     <Stack.Screen
       name="Categories"
@@ -41,7 +76,7 @@ const HomeStack = () => (
 
 const OrderStack = () => (
   <Stack.Navigator
-    initialRouteName="MyOrder"
+    // initialRouteName="MyOrder"
     screenOptions={{
       contentStyle: {
         backgroundColor: '#FFFFFF',
@@ -62,7 +97,7 @@ const OrderStack = () => (
 
 const AuthStack = () => (
   <Stack.Navigator
-    initialRouteName="SignIn"
+    // initialRouteName="SignIn"
     screenOptions={{
       contentStyle: {
         backgroundColor: '#FFFFFF',
@@ -78,25 +113,35 @@ const AuthStack = () => (
       component={SignUp}
       options={{headerShown: false}}
     />
+    <Stack.Screen
+      name="ResetPassword"
+      component={ResetPassword}
+      options={{headerShown: false}}
+    />
+    <Stack.Screen
+      name="EmailVerification"
+      component={EmailVerification}
+      options={{headerShown: false}}
+    />
   </Stack.Navigator>
 );
 
 const TabScreens = () => (
   <Tab.Navigator
-    initialRouteName="Home"
+    initialRouteName="HomeStack"
     swipeEnabled={true}
     animationEnabled={true}
     screenOptions={({route}) => ({
       tabBarIcon: ({focused, color, size}) => {
         let iconName;
 
-        if (route.name === 'Home') {
+        if (route.name === 'HomeStack') {
           iconName = focused ? 'home' : 'home-outline';
         } else if (route.name === 'Categories') {
           iconName = focused ? 'list' : 'list-outline';
-        } else if (route.name === 'Order') {
+        } else if (route.name === 'OrderStack') {
           iconName = focused ? 'cart' : 'cart-outline';
-        } else if (route.name === 'SignIn') {
+        } else if (route.name === 'AuthStack') {
           iconName = focused ? 'person' : 'person-outline';
         }
         return <Ionicons name={iconName} size={size} color={color} />;
@@ -108,10 +153,8 @@ const TabScreens = () => (
       tabBarActiveTintColor: '#3669c9',
       tabBarInactiveTintColor: '#737373',
       tabBarHideOnKeyboard: Platform.OS !== 'ios',
-      tabBarHideOnKeyboard: true,
       tabBarStyle: {
-        backgroundColor: 'white', // Set the background color
-        // paddingBottom: 4,
+        backgroundColor: 'white',
         height: 62,
         borderTopWidth: 1,
         borderTopColor: '#d4d4d4',
@@ -120,40 +163,40 @@ const TabScreens = () => (
       },
     })}>
     <Tab.Screen
-      name="Home"
-      options={{
+      name="HomeStack"
+      component={HomeStack}
+      options={({route}) => ({
         headerShown: false,
         animation: 'slide_from_right',
         tabBarLabel: 'Home',
-      }}
-      component={HomeStack}
+      })}
     />
     <Tab.Screen
       name="Categories"
+      component={Categories}
       options={{
         headerShown: false,
         animation: 'slide_from_right',
         tabBarLabel: 'Categories',
       }}
-      component={Categories}
     />
     <Tab.Screen
-      name="Order"
+      name="OrderStack"
+      component={OrderStack}
       options={{
         headerShown: false,
         animation: 'slide_from_right',
         tabBarLabel: 'Order',
       }}
-      component={OrderStack}
     />
     <Tab.Screen
-      name="SignIn"
+      name="AuthStack"
+      component={AuthStack}
       options={{
         headerShown: false,
         animation: 'slide_from_right',
         tabBarLabel: 'SignIn',
       }}
-      component={AuthStack}
     />
   </Tab.Navigator>
 );
@@ -162,7 +205,7 @@ export default function AppNavigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="TabScreens"
+        // initialRouteName="TabScreens"
         screenOptions={{
           contentStyle: {
             backgroundColor: '#FFFFFF',

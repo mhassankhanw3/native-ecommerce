@@ -6,7 +6,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
-const PasswordInput = () => {
+const PasswordInput = ({lable, placeholder, value, onChangeText}) => {
   const [password, setPassword] = useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
@@ -19,10 +19,10 @@ const PasswordInput = () => {
       <TextInput
         className="flex-1 h-10 px-4"
         style={{fontSize: hp('2%')}}
-        placeholder="Password"
+        placeholder={placeholder}
         secureTextEntry={!isPasswordVisible}
-        value={password}
-        onChangeText={text => setPassword(text)}
+        value={value}
+        onChangeText={text => onChangeText(text)}
       />
       <TouchableOpacity onPress={togglePasswordVisibility} className="p-3">
         <Ionicons
