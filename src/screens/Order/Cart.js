@@ -231,7 +231,7 @@ export default function AddToCart() {
         </View>
       </View>
       <View className="px-2">
-        <Button title={'Check Out'} />
+        <Button title={'Check Out'} navigate={'EnterPaymentDetail'} />
       </View>
       {/* <Text>AddToCart</Text> */}
     </View>

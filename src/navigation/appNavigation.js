@@ -1,5 +1,9 @@
-import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import React, {useEffect, useState} from 'react';
+import {
+  NavigationContainer,
+  useNavigation,
+  useRoute,
+} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -25,10 +29,15 @@ import SearchProduct from '../screens/Home/SearchProducts';
 import FeaturedProducts from '../screens/Home/FeaturedProducts';
 import DetailProduct from '../screens/Home/DetailProduct';
 import AddToCart from '../screens/Order/Cart';
+import EnterPaymentDetail from '../screens/Home/EnterPaymentDetail';
+import Welcome from '../screens/Welcome';
+import Profile from '../screens/Profile/Profile';
+import EditProfile from '../screens/Profile/EditProfile';
+import CustomProducts from '../screens/Products/CustomProducts';
+import AddProduct from '../screens/Products/AddProduct';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-
 function LogoTitle() {
   return (
     <Image
@@ -56,8 +65,6 @@ const HomeStack = () => (
               flex: 1,
               alignItems: 'center',
               marginRight: 20,
-              // borderWidth: 1,
-              // borderColor: 'black',
             }}>
             <LogoTitle {...props} />
           </View>
@@ -79,36 +86,64 @@ const HomeStack = () => (
       component={SearchProduct}
       options={{headerShown: false}}
     />
-
-    {/* Add more screens related to Home here */}
   </Stack.Navigator>
 );
 
-const OrderStack = () => (
-  <Stack.Navigator
-    initialRouteName="MyOrder"
-    screenOptions={{
-      contentStyle: {
-        backgroundColor: '#FFFFFF',
-      },
-    }}>
-    <Stack.Screen
-      name="MyOrder"
-      component={Order}
-      options={{headerShown: false}}
-    />
-    <Stack.Screen
-      name="ShippingAddress"
-      component={AddShippingAddress}
-      options={{headerShown: false}}
-    />
-    <Stack.Screen
-      name="AddToCart"
-      component={AddToCart}
-      options={{headerShown: false}}
-    />
-  </Stack.Navigator>
-);
+const OrderStack = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName="MyOrder"
+      screenOptions={{
+        contentStyle: {
+          backgroundColor: '#FFFFFF',
+        },
+      }}>
+      <Stack.Screen
+        name="MyOrder"
+        component={Order}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ShippingAddress"
+        component={AddShippingAddress}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="AddToCart"
+        component={AddToCart}
+        options={{headerShown: false}}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const ProductsStack = () => {
+  return (
+    <Stack.Navigator
+      // initialRouteName="CustomProducts"
+      screenOptions={{
+        contentStyle: {
+          backgroundColor: '#FFFFFF',
+        },
+      }}>
+      <Stack.Screen
+        name="CustomProducts"
+        component={CustomProducts}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="AddProduct"
+        component={AddProduct}
+        options={{headerShown: false, animation: 'slide_from_bottom'}}
+      />
+      <Stack.Screen
+        name="AddShippingAddress"
+        component={AddShippingAddress}
+        options={{headerShown: false}}
+      />
+    </Stack.Navigator>
+  );
+};
 
 const AuthStack = () => (
   <Stack.Navigator
@@ -141,80 +176,130 @@ const AuthStack = () => (
   </Stack.Navigator>
 );
 
-const TabScreens = () => (
-  <Tab.Navigator
-    initialRouteName="HomeStack"
-    swipeEnabled={true}
-    animationEnabled={true}
-    screenOptions={({route}) => ({
-      tabBarIcon: ({focused, color, size}) => {
-        let iconName;
+const ProfileStack = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName="Profile"
+      screenOptions={{
+        contentStyle: {
+          backgroundColor: '#FFFFFF',
+        },
+      }}>
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="EditProfile"
+        component={EditProfile}
+        options={{headerShown: false}}
+      />
+    </Stack.Navigator>
+  );
+};
 
-        if (route.name === 'HomeStack') {
-          iconName = focused ? 'home' : 'home-outline';
-        } else if (route.name === 'Categories') {
-          iconName = focused ? 'list' : 'list-outline';
-        } else if (route.name === 'OrderStack') {
-          iconName = focused ? 'cart' : 'cart-outline';
-        } else if (route.name === 'AuthStack') {
-          iconName = focused ? 'person' : 'person-outline';
-        }
-        return <Ionicons name={iconName} size={size} color={color} />;
-      },
-      tabBarLabelStyle: {
-        fontSize: 14,
-        fontWeight: 500,
-      },
-      tabBarActiveTintColor: '#3669c9',
-      tabBarInactiveTintColor: '#737373',
-      tabBarHideOnKeyboard: Platform.OS !== 'ios',
-      tabBarStyle: {
-        backgroundColor: 'white',
-        height: 62,
-        borderTopWidth: 1,
-        borderTopColor: '#d4d4d4',
-        paddingBottom: 6,
-        paddingTop: 6,
-      },
-    })}>
-    <Tab.Screen
-      name="HomeStack"
-      component={HomeStack}
-      options={{
-        headerShown: false,
-        // animation: 'slide_from_right',
-        tabBarLabel: 'Home',
-      }}
-    />
-    <Tab.Screen
-      name="Categories"
-      component={Categories}
-      options={{
-        headerShown: false,
-        // animation: 'slide_from_right',
-        tabBarLabel: 'Categories',
-      }}
-    />
-    <Tab.Screen
-      name="OrderStack"
-      component={OrderStack}
-      options={{
-        headerShown: false,
-        // animation: 'slide_from_right',
-        tabBarLabel: 'Order',
-      }}
-    />
-    <Tab.Screen
-      name="AuthStack"
-      component={AuthStack}
-      options={{
-        headerShown: false,
-        // animation: 'slide_from_right',
-        tabBarLabel: 'SignIn',
-      }}
-    />
-  </Tab.Navigator>
-);
+const WelcomeStack = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName="Welcome"
+      screenOptions={{
+        contentStyle: {
+          backgroundColor: '#FFFFFF',
+        },
+      }}>
+      <Stack.Screen
+        name="ProfileStack"
+        component={ProfileStack}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Welcome"
+        component={Welcome}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="AuthStack"
+        component={AuthStack}
+        options={{headerShown: false}}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const TabScreens = () => {
+  return (
+    <Tab.Navigator
+      initialRouteName="HomeStack"
+      swipeEnabled={true}
+      animationEnabled={true}
+      screenOptions={({route}) => ({
+        tabBarIcon: ({focused, color, size}) => {
+          let iconName;
+
+          if (route.name === 'HomeStack') {
+            iconName = focused ? 'home' : 'home-outline';
+          } else if (route.name === 'Categories') {
+            iconName = focused ? 'list' : 'list-outline';
+          } else if (route.name === 'OrderStack') {
+            iconName = focused ? 'cart' : 'cart-outline';
+          } else if (route.name === 'WelcomeStack') {
+            iconName = focused ? 'person' : 'person-outline';
+          }
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+        tabBarLabelStyle: {
+          fontSize: 14,
+          fontWeight: 500,
+        },
+        tabBarActiveTintColor: '#3669c9',
+        tabBarInactiveTintColor: '#737373',
+        tabBarHideOnKeyboard: Platform.OS !== 'ios',
+        tabBarStyle: {
+          backgroundColor: 'white',
+          height: 62,
+          borderTopWidth: 1,
+          borderTopColor: '#d4d4d4',
+          paddingBottom: 6,
+          paddingTop: 6,
+        },
+      })}>
+      <Tab.Screen
+        name="HomeStack"
+        component={HomeStack}
+        options={{
+          headerShown: false,
+          tabBarLabel: 'Home',
+        }}
+      />
+      <Tab.Screen
+        name="Categories"
+        component={Categories}
+        options={{
+          headerShown: false,
+          tabBarLabel: 'Categories',
+        }}
+      />
+      <Tab.Screen
+        name="OrderStack"
+        component={OrderStack}
+        options={({route}) => ({
+          headerShown: false,
+          tabBarLabel: 'Order',
+        })}
+      />
+      <Tab.Screen
+        name="WelcomeStack"
+        component={WelcomeStack}
+        options={{
+          headerShown: false,
+          // animation: 'slide_from_right',
+          tabBarLabel: 'SignIn',
+        }}
+      />
+    </Tab.Navigator>
+  );
+};
 
 export default function AppNavigation() {
   return (
@@ -240,6 +325,16 @@ export default function AppNavigation() {
         <Stack.Screen
           name="FeaturedProducts"
           component={FeaturedProducts}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="EnterPaymentDetail"
+          component={EnterPaymentDetail}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ProductsStack"
+          component={ProductsStack}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
