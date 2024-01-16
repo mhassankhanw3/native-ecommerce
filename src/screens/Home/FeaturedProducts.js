@@ -129,15 +129,15 @@ export default function FeaturedProducts() {
         activeOpacity={0.8}
         onPress={() => navigation.navigate('DetailProduct')}
         className="p-1 bg-white my-1 mx-1 rounded-xl flex flex-col"
-        style={{width: wp('45%'), height: hp('29.2%')}}>
+        style={{width: wp('45%'), height: hp('27%')}}>
         <Image
           source={item.image}
-          className="w-[155px] h-[130px] rounded-lg mx-auto"
+          className="w-[155px] h-[120px] rounded-lg mx-auto"
         />
         <View className="mt-2 mb-1 ml-1">
           <Text
             className="text-gray-600 font-medium"
-            style={{fontSize: hp('2.4%')}}>
+            style={{fontSize: hp('2%')}}>
             {item.title}
           </Text>
           <Text
@@ -177,7 +177,7 @@ export default function FeaturedProducts() {
   };
 
   return (
-    <View className="bg-[#fafafa] pb-14" style={{flexGrow: 1}}>
+    <View className="bg-[#fafafa] h-full" style={{flexGrow: 1}}>
       <View className="flex bg-white flex-row items-center justify-between w-full border-b-[1px] border-gray-200 pt-2 pb-4 px-3">
         <View className="flex flex-row items-center justify-between w-[70%]">
           <TouchableOpacity
@@ -186,7 +186,7 @@ export default function FeaturedProducts() {
             onPress={() => {
               navigation.goBack();
             }}>
-            <Icon name={'chevron-back'} size={24} color={`${'#374151'}`} />
+            <Icon name={'chevron-back'} size={22} color={`${'#374151'}`} />
           </TouchableOpacity>
           <Text
             className="text-gray-700 text-center font-medium"
@@ -198,7 +198,7 @@ export default function FeaturedProducts() {
       </View>
       <FlatList
         data={products}
-        className="pt-4 mx-auto"
+        className="py-4 mx-auto"
         // horizontal
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{flexGrow: 1}}

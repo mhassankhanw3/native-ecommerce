@@ -27,10 +27,8 @@ export default function Option({navigate, title}) {
       onPress={() => {
         navigate ? navigation?.navigate(navigate && navigate) : '';
       }}
-      className="bg-white my-[6px] flex flex-row items-center justify-between py-5 px-4 shadow-2xl shadow-gray-400 w-full">
-      <Text
-        className="text-gray-800 font-medium"
-        style={{fontSize: hp('2.5%')}}>
+      className="bg-white my-[4px] rounded-lg flex flex-row items-center justify-between py-5 px-4 border-[1px] border-gray-100 shadow-xl shadow-gray-200 w-full">
+      <Text className="text-gray-800 font-medium" style={{fontSize: hp('2%')}}>
         {title}
       </Text>
       <TouchableOpacity
@@ -41,7 +39,7 @@ export default function Option({navigate, title}) {
         }}>
         <Icon
           name={'chevron-forward-outline'}
-          size={24}
+          size={22}
           color={`${'#374151'}`}
         />
       </TouchableOpacity>

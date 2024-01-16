@@ -16,10 +16,14 @@ export default function InputEmail({
 
   return (
     <View className="flex flex-col mb-2">
-      <Text className="text-[#152238] text-[16px] font-normal ">{label}</Text>
+      <Text
+        className="text-[#152238] text-[16px] font-normal "
+        style={{fontSize: hp('1.9%')}}>
+        {label}
+      </Text>
       <TextInput
-        className="bg-[#fafafa] h-14 px-4 rounded-[10px] flex items-center justify-center py-2 my-1"
-        style={{fontSize: hp('2%')}}
+        className="bg-[#fafafa] px-4 rounded-[10px] flex items-center justify-center py-2 my-1"
+        style={{fontSize: hp('1.9%'), height: hp('7%')}}
         Editable
         keyboardType={phone && 'number-pad'}
         autoCapitalize="none"

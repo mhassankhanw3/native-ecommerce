@@ -14,12 +14,12 @@ export default function Welcome() {
         <View className="flex-1 items-center justify-center">
           <Text
             className="text-gray-800 font-bold text-center"
-            style={{fontSize: hp('3%')}}>
+            style={{fontSize: hp('2.5%')}}>
             Wecome To Our 👋
           </Text>
           <Text
             className="text-gray-800 font-bold text-center"
-            style={{fontSize: hp('3.5%')}}>
+            style={{fontSize: hp('2.9%')}}>
             E-ceommerce Store
           </Text>
         </View>

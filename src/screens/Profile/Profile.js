@@ -63,10 +63,10 @@ export default function Profile() {
               <View className="flex flex-col items-start">
                 <Text
                   className="text-gray-800 font-bold"
-                  style={{fontSize: hp('3%')}}>
+                  style={{fontSize: hp('2.4%')}}>
                   Hassan Khan
                 </Text>
-                <Text className="text-gray-500" style={{fontSize: hp('2%')}}>
+                <Text className="text-gray-500" style={{fontSize: hp('1.8%')}}>
                   mhassankhanmv@gmail.com
                 </Text>
               </View>
@@ -83,10 +83,10 @@ export default function Profile() {
                     screen: 'AddShippingAddress',
                   });
                 }}
-                className="bg-white my-[6px] flex flex-row items-center justify-between py-5 px-4 shadow-2xl shadow-gray-400 w-full">
+                className="bg-white my-[4px] rounded-lg flex flex-row items-center justify-between py-5 px-4 border-[1px] border-gray-100 shadow-xl shadow-gray-200 w-full">
                 <Text
                   className="text-gray-800 font-medium"
-                  style={{fontSize: hp('2.5%')}}>
+                  style={{fontSize: hp('2%')}}>
                   Add Shipping Address
                 </Text>
                 <TouchableOpacity
@@ -97,7 +97,7 @@ export default function Profile() {
                   }}>
                   <Icon
                     name={'chevron-forward-outline'}
-                    size={24}
+                    size={22}
                     color={`${'#374151'}`}
                   />
                 </TouchableOpacity>

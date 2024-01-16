@@ -12,8 +12,11 @@ export default function Button({title, navigate}) {
     <TouchableOpacity
       activeOpacity={0.8}
       onPress={() => navigate && navigation.navigate(navigate)}
-      className="bg-[#3669c9] max-w-full w-full mx-auto flex items-center justify-center rounded-[10px] py-3.5 shadow-md shadow-gray-700">
-      <Text className="text-[#eaeff9] font-medium" style={{fontSize: hp('2%')}}>
+      className="bg-[#3669c9] max-w-full w-full mx-auto flex items-center justify-center rounded-[10px] shadow-md shadow-gray-700"
+      style={{paddingVertical: hp('1.8%')}}>
+      <Text
+        className="text-[#eaeff9] font-medium"
+        style={{fontSize: hp('1.9%')}}>
         {title}
       </Text>
     </TouchableOpacity>

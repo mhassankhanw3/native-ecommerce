@@ -3,7 +3,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {View, Text, TouchableOpacity, Image} from 'react-native';
+import {View, Text, TouchableOpacity, Image, Platform} from 'react-native';
 
 import {
   NavigationContainer,
@@ -53,7 +53,7 @@ const HeadTab = createMaterialTopTabNavigator();
 function LogoTitle() {
   return (
     <Image
-      style={{width: wp('16%'), height: hp('6%')}}
+      style={{width: hp('6%'), height: hp('6%')}}
       source={require('../assets/images/logos/ecommercelogo.png')}
     />
   );
@@ -76,7 +76,7 @@ const HomeStack = () => (
             style={{
               flex: 1,
               alignItems: 'center',
-              marginRight: 20,
+              marginRight: 27,
             }}>
             <LogoTitle {...props} />
           </View>
@@ -254,22 +254,28 @@ const TabScreens = () => {
           } else if (route.name === 'WelcomeStack') {
             iconName = focused ? 'person' : 'person-outline';
           }
-          return <Ionicons name={iconName} size={size} color={color} />;
+          return <Ionicons name={iconName} size={24} color={color} />;
         },
         tabBarLabelStyle: {
-          fontSize: 14,
-          fontWeight: 500,
+          fontSize: 12,
+          fontWeight: 400,
         },
         tabBarActiveTintColor: '#3669c9',
         tabBarInactiveTintColor: '#737373',
         tabBarHideOnKeyboard: Platform.OS !== 'ios',
         tabBarStyle: {
           backgroundColor: 'white',
-          height: 62,
+          height: 60,
           borderTopWidth: 1,
-          borderTopColor: '#d4d4d4',
+          borderTopColor: '#e5e5e5',
           paddingBottom: 6,
           paddingTop: 6,
+          display: 'flex',
+          flexDirection: 'row',
+          // alignItems: 'center',
+          justifyContent: 'center',
+          alignSelf: 'center',
+          // marginHorizontal: 6,
         },
       })}>
       <Tab.Screen
@@ -330,7 +336,7 @@ const HeaderTabs = () => {
         tabBarStyle: {
           backgroundColor: 'white',
           paddingBottom: 2,
-          paddingTop: 20,
+          paddingTop: 6,
         },
       }}>
       <HeadTab.Screen

@@ -121,11 +121,7 @@ export default function DetailProduct() {
         <View className="px-2 mb-3">
           <TouchableOpacity
             activeOpacity={0.8}
-            onPress={() =>
-              navigation.navigate('OrderStack', {
-                screen: 'AddToCart',
-              })
-            }
+            onPress={() => navigation.navigate('OrderStack')}
             className="bg-[#3669c9] max-w-full w-full mx-auto flex items-center justify-center rounded-[10px] py-3.5 shadow-md shadow-gray-700">
             <Text
               className="text-[#eaeff9] font-medium"

@@ -15,7 +15,11 @@ export default function BackBtn({title, navigate}) {
           onPress={() => {
             navigation.goBack();
           }}>
-          <Icon name={'chevron-back'} size={30} color={`${'#0c1a30'}`} />
+          <Icon
+            name={'chevron-back-outline'}
+            size={24}
+            color={`${'#0c1a30'}`}
+          />
         </TouchableHighlight>
       </View>
       {title ? (

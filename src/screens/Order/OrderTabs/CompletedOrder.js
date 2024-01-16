@@ -45,24 +45,24 @@ export default function CompletedOrder() {
               <View className="flex flex-row items-center space-x-1">
                 <Text
                   className="font-bold text-gray-400"
-                  style={{fontSize: hp('2.2%')}}>
+                  style={{fontSize: hp('2%')}}>
                   Quantity:
                 </Text>
                 <Text
                   className="font-bold text-gray-800"
-                  style={{fontSize: hp('2.2%')}}>
+                  style={{fontSize: hp('2%')}}>
                   03
                 </Text>
               </View>
               <View className="flex flex-row items-center space-x-1">
                 <Text
                   className="font-bold text-gray-400"
-                  style={{fontSize: hp('2.2%')}}>
+                  style={{fontSize: hp('2%')}}>
                   Total Amount:
                 </Text>
                 <Text
                   className="font-bold text-gray-800"
-                  style={{fontSize: hp('2.2%')}}>
+                  style={{fontSize: hp('2%')}}>
                   $150
                 </Text>
               </View>
@@ -73,14 +73,14 @@ export default function CompletedOrder() {
                 className="flex flex-row items-center bg-blue-500 py-2 px-4 rounded-md">
                 <Text
                   className="font-medium text-gray-50"
-                  style={{fontSize: hp('2.2%')}}>
+                  style={{fontSize: hp('2%')}}>
                   Details
                 </Text>
               </TouchableOpacity>
               <View className="flex flex-row items-center">
                 <Text
                   className="font-bold text-green-500"
-                  style={{fontSize: hp('2.2%')}}>
+                  style={{fontSize: hp('2%')}}>
                   Completed
                 </Text>
               </View>

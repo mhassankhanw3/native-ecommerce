@@ -75,7 +75,7 @@ export default function AddProduct() {
           <TouchableOpacity
             underlayColor={`${'#93c5fd'}`}
             className={
-              'bg-blue-500 p-2 z-50 rounded-full absolute left-5 top-10 flex items-center justify-center'
+              'bg-blue-500 p-2 z-50 rounded-full absolute left-4 top-8 flex items-center justify-center'
             }
             onPress={() => {
               navigation.goBack();
@@ -87,7 +87,7 @@ export default function AddProduct() {
             />
           </TouchableOpacity>
           {!photoURL && (
-            <View style={{flex: 1}}>
+            <View className="flex-1">
               <TouchableOpacity
                 onPress={handleChooseImage}
                 style={{
@@ -104,32 +104,31 @@ export default function AddProduct() {
               </TouchableOpacity>
             </View>
           )}
-
-          <View className="bg-white p-3 rounded-t-3xl h-[50%]">
-            <View className="flex flex-col mb-2">
+        </View>
+        <View className="bg-white p-3 rounded-t-3xl h-[50%]">
+          <View className="flex flex-col mb-2">
+            <TextInput
+              className="bg-transparent border-gray-200 border-[1px] h-14 px-4 rounded-2xl flex items-center justify-center py-2 my-1"
+              style={{fontSize: hp('1.8%')}}
+              Editable
+              placeholder={'Name'}
+            />
+          </View>
+          <View className="flex flex-col mb-2">
+            <View className="bg-transparent border-gray-200 border-[1px] h-52 rounded-2xl my-1">
               <TextInput
-                className="bg-transparent border-gray-200 border-[1px] h-14 px-4 rounded-2xl flex items-center justify-center py-2 my-1"
-                style={{fontSize: hp('2%')}}
-                Editable
-                placeholder={'Name'}
+                multiline={true}
+                numberOfLines={6}
+                className={`bg-transparent h-14 max-h-52 px-4 text-start rounded-2xl py-2`}
+                style={{justifyContent: 'flex-start', fontSize: hp('1.8%')}}
+                placeholder={'Description'}
+                value={area}
+                onChangeText={text => setarea(text)}
               />
             </View>
-            <View className="flex flex-col mb-2">
-              <View className="bg-transparent border-gray-200 border-[1px] h-52 rounded-2xl my-1">
-                <TextInput
-                  multiline={true}
-                  numberOfLines={6}
-                  className={`bg-transparent h-14 max-h-52 px-4 text-start rounded-2xl py-2`}
-                  style={{justifyContent: 'flex-start'}}
-                  placeholder={'Description'}
-                  value={area}
-                  onChangeText={text => setarea(text)}
-                />
-              </View>
-            </View>
-            <View className="mt-2">
-              <Button title={'Submit'} navigate={'HeaderTabs'} />
-            </View>
+          </View>
+          <View>
+            <Button title={'Submit'} navigate={'HeaderTabs'} />
           </View>
         </View>
       </View>

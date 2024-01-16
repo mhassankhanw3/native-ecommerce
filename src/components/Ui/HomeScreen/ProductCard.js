@@ -96,15 +96,15 @@ export default function ProductCard() {
       activeOpacity={0.8}
       onPress={() => navigation.navigate('DetailProduct')}
       className=" p-1 bg-white ml-2 rounded-xl flex flex-col"
-      style={{width: wp('45%'), height: hp('29.2%')}}>
+      style={{width: wp('45%'), height: hp('27%')}}>
       <Image
         source={item.image}
-        className="w-[155px] h-[130px] rounded-lg mx-auto"
+        className="w-[155px] h-[120px] rounded-lg mx-auto"
       />
       <View className="mt-2 mb-1 ml-1">
         <Text
           className="text-gray-600 font-medium"
-          style={{fontSize: hp('2.4%')}}>
+          style={{fontSize: hp('2%')}}>
           {item.title}
         </Text>
         <Text
@@ -145,7 +145,7 @@ export default function ProductCard() {
   return (
     <FlatList
       data={products}
-      className="mt-4"
+      className="mt-2"
       horizontal
       showsHorizontalScrollIndicator={false}
       keyExtractor={item => item.id}

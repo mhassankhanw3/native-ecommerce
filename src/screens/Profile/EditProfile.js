@@ -58,8 +58,8 @@ export default function EditProfile() {
             <View
               className="mx-auto rounded-full relative flex items-center justify-center"
               style={{
-                width: hp('17.5%'),
-                height: hp('17.5%'),
+                width: hp('15%'),
+                height: hp('15%'),
                 // borderWidth: 1,
                 // borderColor: 'black',
               }}>
@@ -67,8 +67,8 @@ export default function EditProfile() {
                 className="rounded-full mx-auto "
                 source={require('../../assets/images/user-avatars/avatar.png')}
                 style={{
-                  width: hp('17.5%'),
-                  height: hp('17.5%'),
+                  width: hp('15%'),
+                  height: hp('15%'),
                   // borderWidth: 1,
                   // borderColor: 'black',
                 }}

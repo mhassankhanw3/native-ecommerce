@@ -17,8 +17,8 @@ const PasswordInput = ({lable, placeholder, value, onChangeText}) => {
   return (
     <View className="bg-[#fafafa] flex flex-row items-center rounded-[10px] py-1 my-2">
       <TextInput
-        className="flex-1 h-10 px-4"
-        style={{fontSize: hp('2%')}}
+        className="flex-1 px-4"
+        style={{fontSize: hp('1.9%'), height: hp('6%')}}
         placeholder={placeholder}
         secureTextEntry={!isPasswordVisible}
         value={value}

@@ -45,12 +45,12 @@ export default function SignIn() {
         contentContainerStyle={{flexGrow: 1}}>
         <View style={{flexGrow: 1}} className="pt-10">
           {/* <BackBtn /> */}
-          <View className="p-1 flex flex-row items-center">
+          <View className="p-1 flex flex-row items-center space-x-2">
             <Image
               source={require('../../assets/images/logos/ecommercelogo.png')}
               style={{
-                width: wp('40%'),
-                height: hp('14%'),
+                width: hp('11%'),
+                height: hp('11%'),
                 // borderWidth: 1,
                 // borderColor: 'black',
               }}
@@ -58,7 +58,7 @@ export default function SignIn() {
             <View className="flex flex-col items-start justify-center">
               <Text
                 className="text-gray-800 font-medium"
-                style={{fontSize: hp('2.2%')}}>
+                style={{fontSize: hp('2%')}}>
                 E-commerce
               </Text>
               <Text
@@ -71,7 +71,7 @@ export default function SignIn() {
           <View className="px-2 mt-6 w-full">
             <Text
               className="text-gray-800 font-bold"
-              style={{fontSize: hp('3.6%')}}>
+              style={{fontSize: hp('2.8%')}}>
               Hi, Welcome Back! 👋
             </Text>
             <KeyboardAvoidingView behavior="position">
@@ -84,7 +84,9 @@ export default function SignIn() {
                 />
 
                 <View className="flex flex-col mb-2">
-                  <Text className="text-[#152238] text-[16px] font-normal ">
+                  <Text
+                    className="text-[#152238] font-normal"
+                    style={{fontSize: hp('1.9%')}}>
                     Password
                   </Text>
                   <PasswordInput
@@ -101,9 +103,9 @@ export default function SignIn() {
                     isChecked={isChecked}
                     // leftText={'CheckBox'}
                     rightTextStyle={{
-                      fontSize: 16,
+                      fontSize: 14,
                       fontWeight: 500,
-                      color: '#374151',
+                      color: '#4b5563',
                     }}
                     rightText="Remember Me"
                   />
@@ -113,7 +115,7 @@ export default function SignIn() {
                     onPress={() => navigation?.navigate('ResetPassword')}>
                     <Text
                       className="text-red-400 font-medium"
-                      style={{fontSize: hp('2.0%')}}>
+                      style={{fontSize: hp('1.8%')}}>
                       Forgot Password?
                     </Text>
                   </TouchableOpacity>
@@ -124,15 +126,13 @@ export default function SignIn() {
             <View className="flex flex-col items-center justify-center space-y-2">
               <Button title="Login" navigate={'HomeStack'} />
               <View className="mx-2 flex flex-row items-center">
-                <Text className="text-gray-500" style={{fontSize: hp('2.2%')}}>
+                <Text className="text-gray-500" style={{fontSize: hp('1.9%')}}>
                   Don't have an account?{' '}
                 </Text>
                 <TouchableOpacity
                   activeOpacity={0.7}
                   onPress={() => navigation?.navigate('SignUp')}>
-                  <Text
-                    className="text-blue-500"
-                    style={{fontSize: hp('2.3%')}}>
+                  <Text className="text-blue-500" style={{fontSize: hp('2%')}}>
                     Sign Up
                   </Text>
                 </TouchableOpacity>

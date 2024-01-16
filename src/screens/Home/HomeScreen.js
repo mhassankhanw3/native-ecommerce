@@ -38,23 +38,23 @@ export default function HomeScreen() {
             <TouchableOpacity
               activeOpacity={0.9}
               onPress={() => navigation.navigate('SearchProduct')}
-              className="bg-[#fafafa] flex flex-row items-center justify-between rounded-[10px] py-4 px-3 my-2">
-              <Text className="text-gray-400" style={{fontSize: hp('2%')}}>
+              className="bg-[#fafafa] flex flex-row items-center justify-between rounded-[10px] py-3 px-3 my-2">
+              <Text className="text-gray-400" style={{fontSize: hp('1.9%')}}>
                 Search Product Name
               </Text>
-              <Ionicons name={'search'} size={24} color="#777" />
+              <Ionicons name={'search'} size={22} color="#777" />
             </TouchableOpacity>
             <Banner />
             <View className="my-4 flex flex-row items-center justify-between">
               <Text
                 className="text-gray-700 font-medium"
-                style={{fontSize: hp('2.5%')}}>
+                style={{fontSize: hp('2.2%')}}>
                 Categories
               </Text>
-              <Pressable>
+              <Pressable onPress={() => navigation.navigate('Categories')}>
                 <Text
                   className="text-blue-500 font-medium"
-                  style={{fontSize: hp('2%')}}>
+                  style={{fontSize: hp('1.9%')}}>
                   See All
                 </Text>
               </Pressable>
@@ -62,22 +62,22 @@ export default function HomeScreen() {
           </View>
           <CategoryList />
         </View>
-        <View className="space-y-2 h-[44%] mt-3 px-2 bg-[#f5f5f5] rounded-t-3xl">
-          <View className="mt-4 px-2 flex flex-row items-center justify-between">
+        <View className="space-y-2 py-2 mt-3 px-2 bg-[#f5f5f5] rounded-t-3xl">
+          <View className="mt-2 px-2 flex flex-row items-center justify-between">
             <Text
               className="text-gray-700 font-medium"
-              style={{fontSize: hp('2.5%')}}>
+              style={{fontSize: hp('2.2%')}}>
               Featured Product
             </Text>
             <Pressable onPress={() => navigation.navigate('FeaturedProducts')}>
               <Text
                 className="text-blue-500 font-medium"
-                style={{fontSize: hp('2%')}}>
+                style={{fontSize: hp('1.9%')}}>
                 See All
               </Text>
             </Pressable>
           </View>
-          <View className="mb-10">
+          <View>
             <ProductCard />
           </View>
         </View>

@@ -35,7 +35,7 @@ export default function SignUp() {
         contentContainerStyle={{flexGrow: 1}}>
         <View style={{flexGrow: 1}} className="px-1">
           <BackBtn />
-          <View className="mt-10">
+          <View className="mt-4">
             <HeadingTxt
               title={'Create An Account'}
               desc={'Enter the given details to create an account.'}
@@ -56,7 +56,9 @@ export default function SignUp() {
                 onChangeText={setUserName}
               />
               <View className="flex flex-col mb-2">
-                <Text className="text-[#152238] text-[16px] font-normal ">
+                <Text
+                  className="text-[#152238] font-normal "
+                  style={{fontSize: hp('1.9%')}}>
                   Password
                 </Text>
                 <PasswordInput
@@ -66,7 +68,9 @@ export default function SignUp() {
                 />
               </View>
               <View className="flex flex-col mb-2">
-                <Text className="text-[#152238] text-[16px] font-normal ">
+                <Text
+                  className="text-[#152238] font-normal "
+                  style={{fontSize: hp('1.9%')}}>
                   Confirm Password
                 </Text>
                 <PasswordInput
@@ -81,13 +85,13 @@ export default function SignUp() {
         <View className="flex flex-col items-center justify-center space-y-2 mb-2">
           <Button title="Confirmation" />
           <View className="mx-2 flex flex-row items-center">
-            <Text className="text-gray-500" style={{fontSize: hp('2.2%')}}>
+            <Text className="text-gray-500" style={{fontSize: hp('1.9%')}}>
               Already have an account?{' '}
             </Text>
             <TouchableOpacity
               activeOpacity={0.7}
               onPress={() => navigation.navigate('AuthStack')}>
-              <Text className="text-blue-500" style={{fontSize: hp('2.3%')}}>
+              <Text className="text-blue-500" style={{fontSize: hp('2.1%')}}>
                 Sign In
               </Text>
             </TouchableOpacity>

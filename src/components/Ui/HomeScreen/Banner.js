@@ -21,7 +21,7 @@ export default function Banner() {
       <View className="flex flex-col items-start space-y-1">
         <Text
           className="text-white font-medium"
-          style={{fontSize: hp('3%'), width: wp('36%')}}>
+          style={{fontSize: hp('2.8%'), width: wp('34%')}}>
           Comfortable Chair
         </Text>
         <Pressable

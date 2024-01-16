@@ -93,14 +93,14 @@ export default function Categories() {
               onPress={() => {
                 navigation.goBack();
               }}>
-              <Icon name={'chevron-back'} size={24} color={`${'#374151'}`} />
+              <Icon name={'chevron-back'} size={22} color={`${'#374151'}`} />
             </TouchableOpacity>
             <Text
               className="text-gray-700 text-center font-medium"
-              style={{fontSize: hp('2.2%')}}>
+              style={{fontSize: hp('2%')}}>
               Categories
             </Text>
-            <Ionicons name={'search'} size={24} color="#374151" />
+            <Ionicons name={'search'} size={22} color="#374151" />
           </View>
           <View className="flex flex-row flex-wrap items-start justify-start gap-4 mt-4 w-[95%] mx-auto">
             {categories.map(category => (
