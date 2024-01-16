@@ -120,6 +120,7 @@ export default function AddShippingAddress() {
               <CustomInput
                 label={'Phone Number'}
                 placeholder={'+92 3331268198'}
+                phone={true}
               />
             </View>
           </View>

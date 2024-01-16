@@ -37,7 +37,7 @@ export default function Option({navigate, title}) {
         underlayColor={`${'#e5e7eb'}`}
         className={'bg-transparent rounded-full'}
         onPress={() => {
-          navigation.navigate(navigate && navigate);
+          navigation.navigate(navigate);
         }}>
         <Icon
           name={'chevron-forward-outline'}

@@ -1,11 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
+
+import {
   NavigationContainer,
   useNavigation,
   useRoute,
 } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Feather from 'react-native-vector-icons/Feather';
@@ -20,24 +28,28 @@ import AddShippingAddress from '../screens/Shipping/AddShippingAddress';
 import ResetPassword from '../screens/Auth/ResetPassword';
 import EmailVerification from '../screens/Auth/EmailVerification';
 
-import {View, Text, TouchableOpacity, Image} from 'react-native';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
 import SearchProduct from '../screens/Home/SearchProducts';
 import FeaturedProducts from '../screens/Home/FeaturedProducts';
 import DetailProduct from '../screens/Home/DetailProduct';
-import AddToCart from '../screens/Order/Cart';
-import EnterPaymentDetail from '../screens/Home/EnterPaymentDetail';
-import Welcome from '../screens/Welcome';
-import Profile from '../screens/Profile/Profile';
-import EditProfile from '../screens/Profile/EditProfile';
 import CustomProducts from '../screens/Products/CustomProducts';
 import AddProduct from '../screens/Products/AddProduct';
 
+import AddToCart from '../screens/Order/Cart';
+import EnterPaymentDetail from '../screens/Home/EnterPaymentDetail';
+
+import Welcome from '../screens/Welcome';
+import Profile from '../screens/Profile/Profile';
+import EditProfile from '../screens/Profile/EditProfile';
+import Pending from '../screens/Order/OrderTabs/Pending';
+import RemainingPayment from '../screens/Order/OrderTabs/RemainingPayment';
+import OntheWay from '../screens/Order/OrderTabs/OntheWay';
+import CompletedOrder from '../screens/Order/OrderTabs/CompletedOrder';
+import CanceledOrder from '../screens/Order/OrderTabs/CanceledOrder';
+
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+const HeadTab = createMaterialTopTabNavigator();
+
 function LogoTitle() {
   return (
     <Image
@@ -103,11 +115,7 @@ const OrderStack = () => {
         component={Order}
         options={{headerShown: false}}
       />
-      <Stack.Screen
-        name="ShippingAddress"
-        component={AddShippingAddress}
-        options={{headerShown: false}}
-      />
+
       <Stack.Screen
         name="AddToCart"
         component={AddToCart}
@@ -301,6 +309,75 @@ const TabScreens = () => {
   );
 };
 
+const HeaderTabs = () => {
+  return (
+    <HeadTab.Navigator
+      initialRouteName="Pending"
+      backBehavior="initialRoute"
+      screenOptions={{
+        tabBarAndroidRipple: {borderless: true},
+        tabBarBounces: true,
+        tabBarScrollEnabled: true,
+        tabBarActiveTintColor: 'black',
+        tabBarInactiveTintColor: '#6b7280',
+        // tabBarItemStyle: {width: 120},
+        tabBarAllowFontScaling: true,
+        tabBarLabelStyle: {
+          fontSize: 14,
+          fontWeight: 500,
+          textTransform: 'capitalize',
+        },
+        tabBarStyle: {
+          backgroundColor: 'white',
+          paddingBottom: 2,
+          paddingTop: 20,
+        },
+      }}>
+      <HeadTab.Screen
+        name="Pending"
+        component={Pending}
+        options={{
+          // headerShown: false,
+          tabBarLabel: 'Pending',
+        }}
+      />
+      <HeadTab.Screen
+        name="RemainingPayment"
+        component={RemainingPayment}
+        options={{
+          // headerShown: false,
+          tabBarLabel: 'Remaining',
+        }}
+      />
+      <HeadTab.Screen
+        name="OntheWay"
+        component={OntheWay}
+        options={{
+          // headerShown: false,
+          // animationEnabled: true,
+          tabBarLabel: 'On The Way',
+        }}
+      />
+      <HeadTab.Screen
+        name="CompletedOrder"
+        component={CompletedOrder}
+        options={{
+          // headerShown: false,
+          tabBarLabel: 'Completed',
+        }}
+      />
+      <HeadTab.Screen
+        name="CanceledOrder"
+        component={CanceledOrder}
+        options={{
+          // headerShown: false,
+          tabBarLabel: 'Canceled',
+        }}
+      />
+    </HeadTab.Navigator>
+  );
+};
+
 export default function AppNavigation() {
   return (
     <NavigationContainer>
@@ -314,6 +391,11 @@ export default function AppNavigation() {
         <Stack.Screen
           name="TabScreens"
           component={TabScreens}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="HeaderTabs"
+          component={HeaderTabs}
           options={{headerShown: false}}
         />
         <Stack.Screen

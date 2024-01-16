@@ -128,7 +128,7 @@ export default function AddProduct() {
               </View>
             </View>
             <View className="mt-2">
-              <Button title={'Submit'} navigate={'AddShippingAddress'} />
+              <Button title={'Submit'} navigate={'HeaderTabs'} />
             </View>
           </View>
         </View>

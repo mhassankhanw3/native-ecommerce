@@ -75,8 +75,33 @@ export default function Profile() {
               <Option title={'Profile'} navigate={'EditProfile'} />
               <Option title={'Custom Product'} navigate={'ProductsStack'} />
               <Option title={'Support'} />
-              <Option title={'Order Tracking'} />
-              <Option title={'Add shipping address'} />
+              <Option title={'Order Tracking'} navigate={'HeaderTabs'} />
+              <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={() => {
+                  navigation?.navigate('ProductsStack', {
+                    screen: 'AddShippingAddress',
+                  });
+                }}
+                className="bg-white my-[6px] flex flex-row items-center justify-between py-5 px-4 shadow-2xl shadow-gray-400 w-full">
+                <Text
+                  className="text-gray-800 font-medium"
+                  style={{fontSize: hp('2.5%')}}>
+                  Add Shipping Address
+                </Text>
+                <TouchableOpacity
+                  underlayColor={`${'#e5e7eb'}`}
+                  className={'bg-transparent rounded-full'}
+                  onPress={() => {
+                    navigation.navigate('AddShippingAddress');
+                  }}>
+                  <Icon
+                    name={'chevron-forward-outline'}
+                    size={24}
+                    color={`${'#374151'}`}
+                  />
+                </TouchableOpacity>
+              </TouchableOpacity>
             </View>
           </View>
         </View>

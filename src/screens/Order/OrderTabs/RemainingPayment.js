@@ -18,7 +18,7 @@ import {
 } from 'react-native-responsive-screen';
 import Layout from '../../../components/Layout/Layout';
 
-export default function CompletedOrder() {
+export default function RemainingPayment() {
   return (
     <Layout>
       <ScrollView
@@ -79,9 +79,9 @@ export default function CompletedOrder() {
               </TouchableOpacity>
               <View className="flex flex-row items-center">
                 <Text
-                  className="font-bold text-green-500"
+                  className="font-bold text-orange-500"
                   style={{fontSize: hp('2.2%')}}>
-                  Completed
+                  Remaining
                 </Text>
               </View>
             </View>
